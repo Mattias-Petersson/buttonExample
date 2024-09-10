@@ -8,24 +8,31 @@ type BaseButtonProps = {
 };
 type ButtonProps = ComponentProps<"button"> & BaseButtonProps;
 type AnchorProps = ComponentProps<"a"> & BaseButtonProps;
-type SizeProps = { width: string };
+type StyleProps = { width: string; height: string; color: string };
 
 export const BaseButton = (props: ButtonProps | AnchorProps) => {
   const { text, size, isFluid, ...rest } = props;
 
-  const sizes: { [key: string]: SizeProps } = {
-    s: { width: "5rem" },
-    m: { width: "8rem" },
+  const style: { [key: string]: StyleProps } = {
+    s: { width: "5rem", height: "2rem", color: "#32a852" },
+    m: { width: "8rem", height: "3rem", color: "#1235b3" },
   };
-  const width = { width: isFluid ? "100%" : sizes[size].width };
+  const width = { width: isFluid ? "100%" : style[size].width };
   return (
     <>
       {props.href === undefined ? (
-        <button style={width} {...(rest as ComponentProps<"button">)}>
+        <button
+          style={{ ...style[size], ...width }}
+          {...(rest as ComponentProps<"button">)}
+        >
           {text}
         </button>
       ) : (
-        <a href={props.href} style={width} {...(rest as ComponentProps<"a">)}>
+        <a
+          href={props.href}
+          style={{ ...style[size], ...width }}
+          {...(rest as ComponentProps<"a">)}
+        >
           {text}
         </a>
       )}

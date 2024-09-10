@@ -10,7 +10,7 @@ function App() {
         disabled
       />
       <BaseButton text="Storlek m" size="m" disabled />
-      <BaseButton text="Storlek s" size="s" disabled />
+      <BaseButton text="Storlek s" size="s" />
       <BaseButton href="google.se" text="google" size="s" />
       {/* TODO: The following button does not complain that target is an invalid flag for a button element. */}
       <BaseButton text="google" size="s" target="_blank" />
