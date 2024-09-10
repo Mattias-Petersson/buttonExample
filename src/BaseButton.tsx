@@ -14,18 +14,18 @@ export const BaseButton = (props: ButtonProps | AnchorProps) => {
   const { text, size, isFluid, ...rest } = props;
 
   const sizes: { [key: string]: SizeProps } = {
-    s: { width: "50px" },
-    m: { width: "80px" },
+    s: { width: "5rem" },
+    m: { width: "8rem" },
   };
-  const style = { width: isFluid ? "100%" : sizes[size].width };
+  const width = { width: isFluid ? "100%" : sizes[size].width };
   return (
     <>
       {props.href === undefined ? (
-        <button style={style} {...(rest as ComponentProps<"button">)}>
+        <button style={width} {...(rest as ComponentProps<"button">)}>
           {text}
         </button>
       ) : (
-        <a href={props.href} style={style} {...(rest as ComponentProps<"a">)}>
+        <a href={props.href} style={width} {...(rest as ComponentProps<"a">)}>
           {text}
         </a>
       )}
